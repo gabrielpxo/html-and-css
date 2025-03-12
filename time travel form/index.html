@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="pt">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Formulário de Inscrição para uma Viagem no Tempo</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <h1 id="title">Formulário de Inscrição para uma Viagem no Tempo</h1>
+    <p id="description">Antes de embarcar na sua viagem pelo tempo, precisamos de algumas informações para garantir sua segurança e conformidade com as Leis do Espaço-Tempo.</p>
+    <div class="form">
+        <form id="survey-form">
+        <fieldset>
+            <legend>Registro</legend>
+            <label id="name-label">Nome
+            <input id="name" name="name" type="text" placeholder="Digite seu nome" required/>
+            </label>
+            <label id="email-label">Email
+            <input id="email" name="email" type="email" required placeholder="Digite seu email"/>
+            </label>
+            <label id="number-label">Idade
+            <input id="number" name="number" type="number" min="18" max="120" placeholder="Digite sua idade"/>
+            </label>
+            <label id="motivation-label">Qual a sua motivação para participar do programa?
+            <select id="dropdown">
+                <option value="">(selecione uma opção)</option>
+                <option value="1">Pesquisa histórica</option>
+                <option value="2">Missão Secreta</option>
+                <option value="3">Turismo temporal</option>
+                <option value="4">Outro</option>
+            </select>
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>Selecione uma localização de destino</legend>
+            <label>
+            <input type="radio" name="periodo" value="1" checked/>Rio de Janeiro
+            </label>
+            <label>
+            <input type="radio" name="periodo" value="2"/>Cairo
+            </label>
+            <label>
+            <input type="radio" name="periodo" value="3"/>Paris
+            </label>
+            <label>
+            <input type="radio" name="periodo" value="4"/>Pequim
+            </label>
+            <label>
+            <input type="radio" name="periodo" value="5"/>Moscou
+            </label>
+            <label>
+            <input type="radio" name="periodo" value="6"/>Cidade do México
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>Por quais períodos você gostaria de passar?</legend>
+            <label>
+            <input type="checkbox"class="inline" value="1"checked/>Século XXX a.C. ou antes
+            <input type="checkbox"class="inline" value="2"/>Século XV a.C. - XI a.C.
+            <input type="checkbox"class="inline" value="3"/>Século X a.C. - VI a.C.
+            <input type="checkbox"class="inline" value="4"/>Século V a.C. - I a.C.
+            <input type="checkbox" value="5"/>Século I - V
+            <input type="checkbox" value="6"/>Século VI - X
+            <input type="checkbox" value="7"/>Século XI - XV 
+            <input type="checkbox" value="8"/>Século XVI - XVIII
+            <input type="checkbox" value="9"/>Século XIX - XXI
+            <input type="checkbox" value="10"/>Século XXII ou além
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>Por que você deveria ser selecionado para o programa?</legend>
+            <label>
+            <textarea id="carta-motivacao" name="carta-motivacao" rows="5" cols="60" placeholder="Digite aqui a sua carta de motivação"></textarea>
+            </label>
+        </fieldset>
+        <br>
+        <label>
+            <input id="submit" type="submit" value="Registrar"/>
+        </label>
+    </div>
+    </form>
+  </body>
+</html>

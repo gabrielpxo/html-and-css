@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show de Mágica com Coelhinhos</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+</head>
+<body>
+<script>
+const config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    scene: {
+        preload: preload,
+        create: create
+    }
+};
+
+const game = new Phaser.Game(config);
+let rabbits = [];
+let rabbitCount = 0;
+
+function preload() {
+    this.load.image('background', '/assets/circus-yellow-white-vibrant-stage-background_1409-4891.jpg');
+    this.load.image('magician', '/assets/magico.png');
+    this.load.image('hat', '/assets/cartola.png');
+    this.load.image('rabbit', '/assets/coelho.png');
+}
+
+function create() {
+    this.add.image(400, 300, 'background').setScale(0.8);
+    
+    this.add.text(120, 50, 'Ajude o mágico!\nClique em qualquer tecla para fazer\nos coelhos aparecerem!', 
+        { font: '32px Arial', fill: '#ffcc00', align: 'center', stroke: '#000', strokeThickness: 4 });
+    
+    this.add.image(200, 450, 'magician').setScale(0.6);
+    const hat = this.add.image(550, 450, 'hat').setScale(0.5);
+    
+    this.input.keyboard.on('keydown', addRabbit, this);
+    this.input.on('pointerdown', addRabbit, this);
+    
+    function addRabbit() {
+        const rabbit = this.add.sprite(
+            Phaser.Math.Between(480, 600), 
+            Phaser.Math.Between(400, 450), 
+            'rabbit'
+        ).setScale(0.4 + rabbits.length * 0.05);
+        
+        rabbits.push(rabbit);
+    
+        rabbit.on('destroy', () => {
+            const index = rabbits.indexOf(rabbit);
+            if (index !== -1) rabbits.splice(index, 1);
+        });
+    
+        this.tweens.add({
+            targets: rabbit,
+            y: rabbit.y - 80,
+            duration: 400,
+            ease: 'Power1',
+            yoyo: true,
+            repeat: 0,
+            onComplete: () => {
+                rabbit.angle = Phaser.Math.Between(-10, 10);
+                this.time.delayedCall(2000, () => rabbit.destroy(), [], this);
+            }
+        });
+    }
+}
+</script>
+</body>
+</html>
